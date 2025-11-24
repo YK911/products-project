@@ -34,6 +34,7 @@ export function renderCategories(categories) {
 }
 
 export function renderProduct(data, selector) {
+  console.log(data);
   const {
     images,
     title,
@@ -42,18 +43,18 @@ export function renderProduct(data, selector) {
     shippingInformation,
     returnPolicy,
     price,
+    id,
   } = data;
   const tagsMarkup = tags.map((tag) => `<li>${tag}</li>`).join("");
 
   const markup = `<img class="modal-product__img" src="${images[0]}" alt="${title}" />
-                    <div class="modal-product__content">
+                    <div class="modal-product__content" data-product-id="${id}">
                     <p class="modal-product__title">${title}</p>
                     <ul class="modal-product__tags">${tagsMarkup}</ul>
                     <p class="modal-product__description">${description}</p>
                     <p class="modal-product__shipping-information">Shipping: ${shippingInformation}</p>
                     <p class="modal-product__return-policy">Return Policy: ${returnPolicy}</p>
                     <p class="modal-product__price">Price: $ ${price}</p>
-                    <button class="modal-product__buy-btn" type="button">Buy</button>
                     </div>`;
 
   selector.innerHTML = markup;

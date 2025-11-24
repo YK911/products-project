@@ -9,3 +9,9 @@ export const searchInputEl = document.querySelector(".search-form__input");
 export const searchClearBtnEl = document.querySelector(
   ".search-form__btn-clear"
 );
+export const modalCartBtnEl = document.querySelector(
+  ".modal-product__btn--cart"
+);
+export const modalWishlistBtnEl = document.querySelector(
+  ".modal-product__btn--wishlist"
+);

@@ -1,3 +1,5 @@
+import { CART_LS } from "./constants";
+import { toggleModalBtnText } from "./helpers";
 import { toggleModal } from "./modal";
 import {
   getProductById,
@@ -7,6 +9,7 @@ import {
 } from "./products-api";
 import {
   categoriesListEl,
+  modalCartBtnEl,
   modalEl,
   modalProductEl,
   notFoundDivEl,
@@ -15,6 +18,7 @@ import {
   searchInputEl,
 } from "./refs";
 import { renderProduct, renderProducts } from "./render-function";
+import { checkLocalStorage } from "./storage";
 
 export async function onCategoriesClick(e) {
   if (e.target.nodeName !== "BUTTON") return;
@@ -54,6 +58,9 @@ export async function onProductClick(e) {
   const { data } = await getProductById(id);
 
   renderProduct(data, modalProductEl);
+
+  toggleModalBtnText(checkLocalStorage(CART_LS, id), modalCartBtnEl);
+
   toggleModal(modalEl);
 }
 
@@ -64,7 +71,7 @@ export async function onFormSubmit(e) {
 
   // Не робити запити з порожнім рядком та пробілами
   if (searchValue.length === 0) {
-    return;
+    return alert("Fill search input");
   }
 
   try {
