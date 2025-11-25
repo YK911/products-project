@@ -18,10 +18,13 @@ import {
 } from "./js/refs";
 import { renderCategories, renderAllProduct } from "./js/render-function";
 import { onModalClick } from "./js/modal";
-import { loadMoreBtnToggle } from "./js/helpers";
-import { LIMIT_PAGE } from "./js/constants";
+import { loadMoreBtnToggle, updateCartCount } from "./js/helpers";
+import { CART_LS, LIMIT_PAGE } from "./js/constants";
+import { loadLocalStorage } from "./js/storage";
 
 async function init() {
+  const storageCart = loadLocalStorage(CART_LS) || [];
+  updateCartCount(storageCart.length);
   const {
     data: { products, total },
   } = await getProducts();

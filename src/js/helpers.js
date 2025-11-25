@@ -1,4 +1,4 @@
-import { loadMoreBtn } from "./refs";
+import { cartCountEl, loadMoreBtn } from "./refs";
 
 export function toggleModalBtnText(toggleText, selector) {
   selector.children[0].textContent = toggleText ? "Remove from " : "Add to";
@@ -9,4 +9,8 @@ export function loadMoreBtnToggle(isHidden = false) {
   if (isHidden) {
     loadMoreBtn.classList.add("is-hidden");
   }
+}
+
+export function updateCartCount(counter) {
+  cartCountEl.textContent = counter;
 }

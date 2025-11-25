@@ -7,6 +7,9 @@ export const modalCloseBtnEl = document.querySelector(".modal__close-btn");
 export const searchformEl = document.querySelector(".search-form");
 export const searchInputEl = document.querySelector(".search-form__input");
 export const loadMoreBtn = document.querySelector(".load-more-btn");
+export const cartCountEl = document.querySelector("[data-cart-count]");
+export const cartTotalItems = document.querySelector("[data-count]");
+export const cartTotalPrice = document.querySelector("[data-price]");
 export const searchClearBtnEl = document.querySelector(
   ".search-form__btn-clear"
 );

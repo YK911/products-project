@@ -1,5 +1,5 @@
 import { CART_LS } from "./constants";
-import { toggleModalBtnText } from "./helpers";
+import { toggleModalBtnText, updateCartCount } from "./helpers";
 import {
   checkLocalStorage,
   loadLocalStorage,
@@ -43,18 +43,23 @@ export function toggleCart(id, bool) {
   const products = loadLocalStorage(CART_LS);
 
   if (bool) {
-    const filteredProducts = products.filter((productId) => productId !== id);
+    const filteredProducts = products.filter(productId => productId !== id);
     saveLocalStorage(CART_LS, filteredProducts);
+    updateCartCount(filteredProducts.length);
     return;
   }
 
   if (products === null) {
     saveLocalStorage(CART_LS, [id]);
+    updateCartCount(1);
     return;
   }
 
-  if (!checkLocalStorage(CART_LS, id))
-    saveLocalStorage(CART_LS, [...products, id]);
+  if (!checkLocalStorage(CART_LS, id)) {
+    const updetedProducts = [...products, id];
+    saveLocalStorage(CART_LS, updetedProducts);
+    updateCartCount(updetedProducts.length);
+  }
 }
 
 export function addToWishlist() {

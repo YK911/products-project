@@ -1,4 +1,9 @@
-import { categoriesListEl, productsListEl } from "./refs";
+import {
+  cartTotalItems,
+  cartTotalPrice,
+  categoriesListEl,
+  productsListEl,
+} from "./refs";
 
 export function renderAllProduct(products) {
   const productsMarkup = products
@@ -57,4 +62,8 @@ export function renderProduct(data, selector) {
                     </div>`;
 
   selector.innerHTML = markup;
+}
+
+export function renderCartSummary(total = 0, selector) {
+  selector.textContent = total;
 }
